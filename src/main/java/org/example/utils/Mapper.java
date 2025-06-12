@@ -52,7 +52,7 @@ public class Mapper {
         ArtWork artWork = new ArtWork();
         artWork.setTitle(request.getTitle());
         artWork.setDescription(request.getDescription());
-        artWork.setImageurl(request.getImageUrl());
+        artWork.setImageUrl(request.getImageUrl());
         artWork.setPrice(request.getPrice());
         artWork.setCategory(request.getCategory());
         artWork.setAvailable(request.isAvailable());
@@ -69,7 +69,7 @@ public class Mapper {
         response.setCategory(artWork.getCategory());
         response.setAvailable(artWork.isAvailable());
         response.setArtistName(artWork.getArtistName());
-        response.setImageUrl(artWork.getImageurl());
+        response.setImageUrl(artWork.getImageUrl());
         return response;
     }
 
