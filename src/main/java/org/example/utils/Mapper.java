@@ -35,14 +35,14 @@ public class Mapper {
 
 
 
-    public static LogInUserResponse mapToLogIn(Users user) {
+    public static LogInUserResponse mapToLogIn(Users users) {
         LogInUserResponse response = new LogInUserResponse();
 
-        if (user == null) {
+        if (users == null) {
             response.setMessage("Login failed: user not found");
         } else {
             response.setMessage("Login successful");
-            response.setUserId(user.getId());
+            response.setUserId(users.getId());
         }
         return response;
 

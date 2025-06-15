@@ -8,6 +8,7 @@ import org.example.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,11 +27,12 @@ public class ArtWorkServiceImpl implements ArtWorkService {
 
     @Override
     public List<ArtWorkResponse> getAllArtWork() {
-        return artWorkRepository.findAll()
-                .stream()
-                .map(Mapper::mapToArtWorkResponse)
-                .collect(Collectors.toList());
-
+        List<ArtWork> artWorks = artWorkRepository.findAll();
+        List<ArtWorkResponse> responses = new ArrayList<>();
+        for (ArtWork artWork : artWorks) {
+            responses.add(Mapper.mapToArtWorkResponse(artWork));
+        }
+        return responses;
     }
 
     @Override

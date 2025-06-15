@@ -10,6 +10,7 @@ import org.example.utils.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class OrderServiceImpl implements OrderService {
         ArtWork artWork = artWorkRepository.findById(request.getArtWorkId())
                 .orElseThrow(() -> new RuntimeException("ArtWork not found"));
 
-        if(!artWork.isAvailable()){
+        if (!artWork.isAvailable()) {
             throw new RuntimeException("ArtWork is not available");
         }
 
@@ -40,9 +41,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<OrderResponse> getOrderByUser(String buyerId) {
-        return orderRepository.findAll().stream()
-                .filter(order -> order.getBuyerId().equals(buyerId))
-                .map(Mapper::mapToOrderResponse)
-                .collect(Collectors.toList());
+        List<Order> orders = orderRepository.findAll();
+        List<OrderResponse> responses = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.getBuyerId().equals(buyerId)) {
+                responses.add(Mapper.mapToOrderResponse(order));
+            }
+        }
+        return responses;
     }
 }
