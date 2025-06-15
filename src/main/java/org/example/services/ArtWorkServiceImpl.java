@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 @Service
 public class ArtWorkServiceImpl implements ArtWorkService {
@@ -23,16 +23,6 @@ public class ArtWorkServiceImpl implements ArtWorkService {
         ArtWork savedArtwork = artWorkRepository.save(artwork);
         return Mapper.mapToArtWorkResponse(savedArtwork);
 
-    }
-
-    @Override
-    public List<ArtWorkResponse> getAllArtWork() {
-        List<ArtWork> artWorks = artWorkRepository.findAll();
-        List<ArtWorkResponse> responses = new ArrayList<>();
-        for (ArtWork artWork : artWorks) {
-            responses.add(Mapper.mapToArtWorkResponse(artWork));
-        }
-        return responses;
     }
 
     @Override

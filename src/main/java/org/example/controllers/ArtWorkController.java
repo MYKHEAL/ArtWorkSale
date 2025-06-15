@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/artworks")
@@ -28,19 +28,26 @@ public class ArtWorkController {
     }
 
 
-
-    @GetMapping
-    public List<ArtWorkResponse> getAllArtWorks(){
-        return artWorkService.getAllArtWork();
-    }
-
     @GetMapping("/{id}")
-    public ArtWorkResponse getArtWorkById(@PathVariable("id") String id){
-        return artWorkService.getArtWorkById(id);
+    public ResponseEntity<?> getArtworkById(@PathVariable String id) {
+        try {
+            ArtWorkResponse response = artWorkService.getArtWorkById(id);
+            return ResponseEntity.ok(response);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Error: " + e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable String id){
-        artWorkService.deleteArtWorkById(id);
+    public ResponseEntity<?> delete(@PathVariable String id) {
+        try {
+            artWorkService.deleteArtWorkById(id);
+            return ResponseEntity.ok("Artwork deleted successfully");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Error deleting artwork: " + e.getMessage());
+        }
+
     }
 }
