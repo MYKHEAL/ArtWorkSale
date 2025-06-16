@@ -20,7 +20,7 @@ public class Mapper {
         users.setName(request.getName());
         users.setEmail(request.getEmail());
         users.setPassword(request.getPassword());
-        users.setPhone(request.getPhone());
+        users.setPhoneNumber(request.getPhoneNumber());
         return users;
 
     }

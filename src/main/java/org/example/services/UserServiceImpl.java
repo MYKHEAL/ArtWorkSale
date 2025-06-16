@@ -24,7 +24,7 @@ private UserRepository userRepository;
         inputValidations.validateEmail(registerUserRequest.getEmail());
         inputValidations.validatePassword(registerUserRequest.getPassword());
         inputValidations.validateName(registerUserRequest.getName());
-        inputValidations.validatePhone(registerUserRequest.getPhone());
+        inputValidations.validatePhone(registerUserRequest.getPhoneNumber());
 
         Users user = Mapper.mapToUser(registerUserRequest);
         Users savedUser = userRepository.save(user);

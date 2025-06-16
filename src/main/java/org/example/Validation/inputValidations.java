@@ -5,20 +5,27 @@ import org.example.exceptions.*;
 public class inputValidations {
 
 
-        public static void validateName(String name) {
-            if (name == null || name.trim().isEmpty()) {
-                throw new NameException("Name cannot be empty");
-            }
-            if (!name.matches("^[A-Za-z]+$")) {
-                throw new NameException("Name must contain only letters");
-            }
+    public static void validateName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new NameException("Name cannot be empty");
+        }
+        if (!name.matches("^[A-Za-z]+$")) {
+            throw new NameException("Name must contain only letters");
+        }
+    }
+
+    public static void validatePhone(String phone) {
+        if (phone == null) {
+            throw new phoneNumberException("Phone number cannot be null");
         }
 
-        public static void validatePhone(String phone) {
-            if (phone == null || !phone.matches("^\\d{11}$")) {
-                throw new phoneNumberException("Phone number must be between 11 digits");
-            }
-        }
+//        phone = phone.trim().replaceAll("\\s+", "");
+//
+//        if (!phone.matches("^\\d{11}$")) {
+//            throw new phoneNumberException("Phone number must be exactly 11 digits");
+//       }
+    }
+
 
         public static void validateEmail(String email) {
             if (email == null || !email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
@@ -34,11 +41,11 @@ public class inputValidations {
             }
             String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
 
-            if (!password.matches(passwordPattern)) {
-                throw new passwordException(
-                        "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one digit"
-                );
-            }
+//            if (!password.matches(passwordPattern)) {
+//                throw new passwordException(
+//                        "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one digit"
+//                );
+//            }
         }
 
 
