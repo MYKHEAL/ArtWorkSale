@@ -1,0 +1,281 @@
+@startuml
+
+
+top to bottom direction
+skinparam linetype ortho
+
+class ArtWork {
+  - isAvailable: boolean
+  - category: String
+  - id: String
+  - price: double
+  - artistName: String
+  - imageUrl: String
+  - title: String
+  - description: String
+  # canEqual(Object): boolean
+  + toString(): String
+  + equals(Object): boolean
+  + hashCode(): int
+   description: String
+   title: String
+   artistName: String
+   isAvailable: boolean
+   category: String
+   id: String
+   price: double
+   imageUrl: String
+}
+class ArtWorkController {
+  + delete(String): ResponseEntity<?>
+  + getArtworkById(String): ResponseEntity<?>
+  + createArtwork(ArtWorkRequest): ResponseEntity<?>
+}
+interface ArtWorkRepository << interface >>
+class ArtWorkRequest {
+  - imageUrl: String
+  - description: String
+  - artistName: String
+  - title: String
+  - category: String
+  - isAvailable: boolean
+  - price: double
+  + toString(): String
+  + hashCode(): int
+  + equals(Object): boolean
+  # canEqual(Object): boolean
+   description: String
+   title: String
+   artistName: String
+   isAvailable: boolean
+   category: String
+   price: double
+   imageUrl: String
+}
+class ArtWorkResponse {
+  - id: String
+  - artistName: String
+  - category: String
+  - title: String
+  - imageUrl: String
+  - isAvailable: boolean
+  - price: double
+  - description: String
+  + equals(Object): boolean
+  + hashCode(): int
+  # canEqual(Object): boolean
+  + toString(): String
+   description: String
+   title: String
+   artistName: String
+   isAvailable: boolean
+   category: String
+   id: String
+   price: double
+   imageUrl: String
+}
+interface ArtWorkService << interface >> {
+  + getArtWorkById(String): ArtWorkResponse
+  + createArtWork(ArtWorkRequest): ArtWorkResponse
+  + deleteArtWorkById(String): void
+}
+class ArtWorkServiceImpl {
+  + getArtWorkById(String): ArtWorkResponse
+  + deleteArtWorkById(String): void
+  + createArtWork(ArtWorkRequest): ArtWorkResponse
+}
+class ArtWorkServiceImplTest {
+  + testGetArtworkById(): void
+  + testCreateArtWork(): void
+}
+class EmailException
+class LogInUserRequest {
+  - email: String
+  - password: String
+  + equals(Object): boolean
+  + hashCode(): int
+  # canEqual(Object): boolean
+  + toString(): String
+   email: String
+   password: String
+}
+class LogInUserResponse {
+  - message: String
+  - userId: String
+  + toString(): String
+  # canEqual(Object): boolean
+  + equals(Object): boolean
+  + hashCode(): int
+   message: String
+   userId: String
+}
+class Main {
+  + main(String[]): void
+}
+class Mapper {
+  + mapToArtWorkResponse(ArtWork): ArtWorkResponse
+  + mapToOrder(OrderRequest): Order
+  + mapToOrderResponse(Order): OrderResponse
+  + mapToResponse(Users): RegisterUserResponse
+  + mapToArtWork(ArtWorkRequest): ArtWork
+  + mapToUser(RegisterUserRequest): Users
+  + mapToLogIn(Users): LogInUserResponse
+}
+class NameException
+class Order {
+  - buyerId: String
+  - payment: String
+  - id: String
+  - artWorkId: String
+  - orderDate: LocalDateTime
+  - artistName: String
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + toString(): String
+  + equals(Object): boolean
+   artWorkId: String
+   artistName: String
+   orderDate: LocalDateTime
+   id: String
+   buyerId: String
+   payment: String
+}
+class OrderContoller {
+  + placeOrder(OrderRequest): OrderResponse
+  + getOrdersByBuyerId(String): List<OrderResponse>
+}
+interface OrderRepository << interface >> {
+  + findByArtistName(String): List<ArtWork>
+}
+class OrderRequest {
+  - artWorkId: String
+  - buyer: String
+  - payment: String
+  + toString(): String
+  + equals(Object): boolean
+  + hashCode(): int
+  # canEqual(Object): boolean
+   buyer: String
+   artWorkId: String
+   payment: String
+}
+class OrderResponse {
+  - artWorkId: String
+  - id: String
+  - buyerId: String
+  - payment: String
+  - orderDate: LocalDateTime
+  + equals(Object): boolean
+  + toString(): String
+  # canEqual(Object): boolean
+  + hashCode(): int
+   artWorkId: String
+   orderDate: LocalDateTime
+   id: String
+   buyerId: String
+   payment: String
+}
+interface OrderService << interface >> {
+  + placeOrder(OrderRequest): OrderResponse
+  + getOrderByUser(String): List<OrderResponse>
+}
+class OrderServiceImpl {
+  + placeOrder(OrderRequest): OrderResponse
+  + getOrderByUser(String): List<OrderResponse>
+}
+class OrderServiceImplTest {
+  ~ getOrderByUser(): void
+  ~ placeOrder(): void
+}
+class RegisterUserRequest {
+  - name: String
+  - phoneNumber: String
+  - password: String
+  - email: String
+  + toString(): String
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + equals(Object): boolean
+   name: String
+   password: String
+   email: String
+   phoneNumber: String
+}
+class RegisterUserResponse {
+  - message: String
+  - Id: String
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + equals(Object): boolean
+  + toString(): String
+   Id: String
+   message: String
+}
+class UserController {
+  + login(LogInUserRequest): ResponseEntity<?>
+  + register(RegisterUserRequest): ResponseEntity<?>
+}
+interface UserRepository << interface >> {
+  + findByEmail(String): Users
+}
+interface UserService << interface >> {
+  + logInUser(LogInUserRequest): LogInUserResponse
+  + registerUser(RegisterUserRequest): RegisterUserResponse
+}
+class UserServiceImpl {
+  + registerUser(RegisterUserRequest): RegisterUserResponse
+  + logInUser(LogInUserRequest): LogInUserResponse
+}
+class UserServiceTest {
+  ~ testRegisterWithDuplicateEmail(): void
+  ~ testLoginWithWrongPassword(): void
+  ~ testRegisterWithEmptyName(): void
+  ~ testRegisterWithInvalidEmail(): void
+  ~ testThaRegisterLogicWork(): void
+  ~ testLoginWithValidCredentials(): void
+  ~ testLoginWithNonExistentEmail(): void
+}
+class Users {
+  - id: String
+  - email: String
+  - password: String
+  - role: String
+  - name: String
+  - phoneNumber: String
+  # canEqual(Object): boolean
+  + hashCode(): int
+  + equals(Object): boolean
+  + toString(): String
+   name: String
+   password: String
+   email: String
+   id: String
+   phoneNumber: String
+   role: String
+}
+class inputValidations {
+  + validatePhone(String): void
+  + validateEmail(String): void
+  + validatePrice(double): void
+  + validateName(String): void
+  + validatePassword(String): void
+}
+class invalidPriceException
+class passwordException
+class phoneNumberException
+
+ArtWorkController      "1" *-[#595959,plain]-> "artWorkService\n1" ArtWorkService
+ArtWorkServiceImpl     "1" *-[#595959,plain]-> "artWorkRepository\n1" ArtWorkRepository
+ArtWorkServiceImpl      -[#008200,dashed]-^  ArtWorkService
+ArtWorkServiceImplTest "1" *-[#595959,plain]-> "artWorkRepository\n1" ArtWorkRepository
+ArtWorkServiceImplTest "1" *-[#595959,plain]-> "artWorkService\n1" ArtWorkServiceImpl
+OrderContoller         "1" *-[#595959,plain]-> "orderService\n1" OrderService
+OrderServiceImpl       "1" *-[#595959,plain]-> "artWorkRepository\n1" ArtWorkRepository
+OrderServiceImpl       "1" *-[#595959,plain]-> "orderRepository\n1" OrderRepository
+OrderServiceImpl        -[#008200,dashed]-^  OrderService
+UserController         "1" *-[#595959,plain]-> "userService\n1" UserService
+UserServiceImpl        "1" *-[#595959,plain]-> "userRepository\n1" UserRepository
+UserServiceImpl         -[#008200,dashed]-^  UserService
+UserServiceTest        "1" *-[#595959,plain]-> "userRepository\n1" UserRepository
+UserServiceTest        "1" *-[#595959,plain]-> "userService\n1" UserServiceImpl
+@enduml

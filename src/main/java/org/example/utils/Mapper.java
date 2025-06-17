@@ -55,6 +55,7 @@ public class Mapper {
         artWork.setImageUrl(request.getImageUrl());
         artWork.setPrice(request.getPrice());
         artWork.setCategory(request.getCategory());
+        artWork.setArtistName(request.getArtistName());
         artWork.setAvailable(request.isAvailable());
         return artWork;
     }

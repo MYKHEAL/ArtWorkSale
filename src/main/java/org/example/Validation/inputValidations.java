@@ -19,11 +19,11 @@ public class inputValidations {
             throw new phoneNumberException("Phone number cannot be null");
         }
 
-//        phone = phone.trim().replaceAll("\\s+", "");
-//
-//        if (!phone.matches("^\\d{11}$")) {
-//            throw new phoneNumberException("Phone number must be exactly 11 digits");
-//       }
+        phone = phone.trim().replaceAll("\\s+", "");
+
+        if (!phone.matches("^\\d{11}$")) {
+            throw new phoneNumberException("Phone number must be exactly 11 digits");
+       }
     }
 
 
@@ -39,13 +39,13 @@ public class inputValidations {
             if (password == null || password.trim().isEmpty()) {
                 throw new passwordException("Password cannot be empty");
             }
-            String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$";
+            String passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{5,}$";
 
-//            if (!password.matches(passwordPattern)) {
-//                throw new passwordException(
-//                        "Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter, and one digit"
-//                );
-//            }
+            if (!password.matches(passwordPattern)) {
+                throw new passwordException(
+                        "Password must be at least 5 characters long, include at least one uppercase letter, one lowercase letter, and one digit"
+                );
+            }
         }
 
 

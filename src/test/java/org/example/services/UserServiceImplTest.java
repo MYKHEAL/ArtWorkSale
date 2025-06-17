@@ -30,7 +30,7 @@ class UserServiceTest {
         RegisterUserRequest registerUserRequest = new RegisterUserRequest();
         registerUserRequest.setEmail("test@test.com");
         registerUserRequest.setPassword("Password23");
-        registerUserRequest.setPhone("12345678944");
+        registerUserRequest.setPhoneNumber("12345678944");
         registerUserRequest.setName("JohnDoe");
         when(userRepository.findByEmail(registerUserRequest.getEmail())).thenReturn(null);
         when(userRepository.save(ArgumentMatchers.any(Users.class))).thenAnswer(i -> i.getArguments()[0]);
@@ -46,7 +46,7 @@ class UserServiceTest {
         request.setName("");
         request.setEmail("test@example.com");
         request.setPassword("Password123");
-        request.setPhone("123456");
+        request.setPhoneNumber("123456");
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> userService.registerUser(request));
         assertEquals("Name cannot be empty", exception.getMessage());
@@ -58,7 +58,7 @@ class UserServiceTest {
         request.setName("Jane");
         request.setEmail("janeDoe");
         request.setPassword("Password123");
-        request.setPhone("123456");
+        request.setPhoneNumber("123456");
 
         RuntimeException exception = assertThrows(RuntimeException.class, () -> userService.registerUser(request));
         assertEquals("Invalid email format", exception.getMessage());
@@ -70,7 +70,7 @@ class UserServiceTest {
         request.setName("John");
         request.setEmail("test@example.com");
         request.setPassword("Password123");
-        request.setPhone("12345678978");
+        request.setPhoneNumber("12345678978");
 
         Users existingUser = new Users();
         existingUser.setEmail("test@example.com");

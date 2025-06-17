@@ -8,8 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/artworks")
 public class ArtWorkController {
@@ -39,6 +40,18 @@ public class ArtWorkController {
         }
     }
 
+    @GetMapping
+    public ResponseEntity<?> getAllArtworks() {
+        try {
+            List<ArtWorkResponse> artworks = artWorkService.getAllArtWorks();
+            return ResponseEntity.ok(artworks);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to fetch artworks: " + e.getMessage());
+        }
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
         try {
@@ -50,4 +63,15 @@ public class ArtWorkController {
         }
 
     }
+    @GetMapping("/search")
+    public ResponseEntity<?> searchArtworks(@RequestParam String keyword) {
+        try {
+            List<ArtWorkResponse> results = artWorkService.searchByKeyword(keyword);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Search failed: " + e.getMessage());
+        }
+    }
+
 }
