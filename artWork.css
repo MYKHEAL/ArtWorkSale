@@ -1,0 +1,187 @@
+body {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.access-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  margin: 0 auto;
+  height: 100%;
+  background-image:url("photos/20250612_0030_image\ \(1\).png");
+  background-size: cover;
+  background-position: center;
+}
+.navLinks ul{
+    list-style:  none;
+    display:flex;
+    width: 500px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.container {
+  background-image:url("photos/20250612_0030_image\ \(1\).png");
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1d3557;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #457b9d;
+}
+
+ .toggle {
+  margin-top: 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  
+}
+
+#home-page {
+  padding: 0;
+  background-image:url("photos/20250612_0030_image\ \(1\).png");
+}
+
+#home-page header {
+  background-color: #222;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+#home-page nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  background-color: #444;
+  padding: 10px 0;
+}
+
+#home-page nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#home-page nav a:hover {
+  text-decoration: underline;
+}
+
+#home-page main {
+  padding: 20px;
+}
+
+#home-page h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+/* ---------------- Art List ---------------- */
+#art-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.art-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.art-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.art-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.art-card .info {
+  padding: 15px;
+}
+
+.art-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  color: #1d3557;
+}
+
+.art-card p {
+  margin: 6px 0;
+  color: #555;
+}
+
+
+#search-input {
+  padding: 8px;
+  width: 200px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.details-card {
+  background: #fff;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.details-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
