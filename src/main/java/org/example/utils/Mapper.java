@@ -88,7 +88,7 @@ public class Mapper {
     public static OrderResponse mapToOrderResponse(Order order) {
         OrderResponse response = new OrderResponse();
         response.setId(order.getArtWorkId());
-        response.setPayment(order.getPayment());
+        response.setPayment(String.valueOf(order.getPayment()));
         response.setBuyerId(order.getBuyerId());
         response.setArtWorkId(order.getArtWorkId());
         response.setOrderDate(order.getOrderDate());

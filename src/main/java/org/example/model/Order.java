@@ -13,6 +13,6 @@ public class Order {
     private String artWorkId;
     private String buyerId;
     private LocalDateTime orderDate;
-    private String payment;
+    private double payment;
     private String artistName;
 }

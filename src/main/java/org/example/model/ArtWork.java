@@ -16,4 +16,5 @@ public class ArtWork {
     private double price;
     private String artistName;
     private boolean isAvailable;
+    private String ownerEmail;
 }

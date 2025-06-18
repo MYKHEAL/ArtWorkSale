@@ -55,6 +55,12 @@ public class inputValidations {
             }
         }
 
+    public static void validateOwnership(String ownerEmail, String userEmail) {
+        if (!ownerEmail.equals(userEmail)) {
+            throw new UnauthorizedArtworkAccessException("You are not allowed to delete this artwork");
+        }
+    }
+
     }
 
 
