@@ -15,4 +15,5 @@ public class Order {
     private LocalDateTime orderDate;
     private double payment;
     private String artistName;
+    private String imageUrl;
 }

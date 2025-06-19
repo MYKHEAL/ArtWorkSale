@@ -22,8 +22,9 @@ public class Mapper {
         users.setPassword(request.getPassword());
         users.setPhoneNumber(request.getPhoneNumber());
         return users;
-
     }
+
+
 
 
     public static RegisterUserResponse mapToResponse(Users users) {
@@ -32,6 +33,8 @@ public class Mapper {
         response.setId(users.getId());
         return response;
     }
+
+
 
 
 
@@ -45,8 +48,8 @@ public class Mapper {
             response.setUserId(users.getId());
         }
         return response;
-
     }
+
 
     public static ArtWork mapToArtWork(ArtWorkRequest request) {
         ArtWork artWork = new ArtWork();
@@ -59,6 +62,8 @@ public class Mapper {
         artWork.setAvailable(request.isAvailable());
         return artWork;
     }
+
+
 
 
     public static ArtWorkResponse mapToArtWorkResponse(ArtWork artWork) {
@@ -87,7 +92,7 @@ public class Mapper {
 
     public static OrderResponse mapToOrderResponse(Order order) {
         OrderResponse response = new OrderResponse();
-        response.setId(order.getArtWorkId());
+        response.setImageUrl(order.getImageUrl());
         response.setPayment(String.valueOf(order.getPayment()));
         response.setBuyerId(order.getBuyerId());
         response.setArtWorkId(order.getArtWorkId());

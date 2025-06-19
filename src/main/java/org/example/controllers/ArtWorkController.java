@@ -22,7 +22,7 @@ public class ArtWorkController {
     @PostMapping
     public ResponseEntity<?> createArtwork(@RequestBody ArtWorkRequest request) {
         try {
-            ArtWorkResponse response = artWorkService.createArtWork(request);
+            ArtWorkResponse response = artWorkService.createArtWork(request, request.getOwnerId());
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error: " + e.getMessage());

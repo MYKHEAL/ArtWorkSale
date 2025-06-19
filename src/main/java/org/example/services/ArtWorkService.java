@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ArtWorkService {
-    ArtWorkResponse createArtWork(ArtWorkRequest request);
+    ArtWorkResponse createArtWork(ArtWorkRequest request, String userId);
     ArtWorkResponse getArtWorkById(String artWorkId);
     void deleteArtWorkById(String artWorkId, String userEmail);
     List<ArtWorkResponse> getAllArtWorks();

@@ -13,4 +13,5 @@ public class ArtWorkRequest {
     private String artistName;
     @JsonProperty("available")
     private boolean isAvailable;
+    private String OwnerId;
 }

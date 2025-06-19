@@ -23,12 +23,12 @@ public class ArtWorkServiceImpl implements ArtWorkService {
     private ArtWorkRepository artWorkRepository;
 
     @Override
-    public ArtWorkResponse createArtWork(ArtWorkRequest request) {
-        ArtWork artwork = Mapper.mapToArtWork(request);
-        ArtWork savedArtwork = artWorkRepository.save(artwork);
-        return Mapper.mapToArtWorkResponse(savedArtwork);
-
-    }
+    public ArtWorkResponse createArtWork(ArtWorkRequest request, String userId) {
+            ArtWork artWork = Mapper.mapToArtWork(request);
+            artWork.setOwnerId(userId);
+            ArtWork saved = artWorkRepository.save(artWork);
+            return Mapper.mapToArtWorkResponse(saved);
+        }
 
     @Override
     public ArtWorkResponse getArtWorkById(String artWorkId) {

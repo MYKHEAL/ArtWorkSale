@@ -42,7 +42,7 @@ class ArtWorkServiceImplTest {
         when(artWorkRepository.save(any(ArtWork.class))).thenReturn(savedArt);
 
 
-        ArtWorkResponse response = artWorkService.createArtWork(artWorkRequest);
+        ArtWorkResponse response = artWorkService.createArtWork(artWorkRequest, savedArt.getId());
 
         assertNotNull(response);
         assertEquals("123", response.getId());
