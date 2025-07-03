@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ArtWorkRepository extends MongoRepository<ArtWork, String> {
 
+    List<ArtWork> findByOwnerId(String OwnerId);
 }

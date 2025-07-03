@@ -9,9 +9,10 @@ public class inputValidations {
         if (name == null || name.trim().isEmpty()) {
             throw new NameException("Name cannot be empty");
         }
-        if (!name.matches("^[A-Za-z]+$")) {
-            throw new NameException("Name must contain only letters");
+        if (!name.matches("^[A-Za-z]+( [A-Za-z]+)*$")) {
+            throw new NameException("Name must contain only letters and single spaces between names");
         }
+
     }
 
     public static void validatePhone(String phone) {

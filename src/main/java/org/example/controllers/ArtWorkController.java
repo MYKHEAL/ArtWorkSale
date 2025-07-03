@@ -35,7 +35,6 @@ public class ArtWorkController {
             ArtWorkResponse response = artWorkService.getArtWorkById(id);
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error: " + e.getMessage());
         }

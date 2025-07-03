@@ -38,6 +38,7 @@ public class OrderServiceImpl implements OrderService {
         if (request.getBuyer().equals(artWork.getOwnerId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "You cannot buy your own artwork.");
         }
+
         artWork.setAvailable(false);
         artWorkRepository.save(artWork);
 
